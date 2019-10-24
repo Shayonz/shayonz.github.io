@@ -30,15 +30,14 @@
             return code;
           })
           .then(codes => {
-            const instructions = document.querySelector(".instructions");
-            instructions.innerHTML = "";
+            if ((document.querySelector("codes").innerText = codes)) {
+              for (let i = 0; i < 15; i++) {
+                const num = Rand(0, 242);
+                let el = document.createElement("li");
+                el.innerText = a[num];
 
-            for (let i = 0; i < 15; i++) {
-              const num = Rand(0, 242);
-              let el = document.createElement("li");
-              el.innerText = a[num];
-
-              instructions.appendChild(el);
+                document.appendChild(el);
+              }
             }
           });
       }
