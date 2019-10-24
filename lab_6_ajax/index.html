@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test AJAX page</title>
+    <link rel="stylesheet" type="text/css" href="./lab_styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Test AJAX page</div>
+        <button class="button" onclick="loadData()">Load Some JSON</button>
+        <div class="content"></div>
+        <div class="footer"></div>
+      </div>
+    </div>
+    <script>
+      function loadData() {
+        fetch("ajax_sample.json")
+          .then(res => res.json())
+          .then(res => data.map(c => c.code))
+          .then(codes => {
+            const a = codes.map(item => {
+              console.log("i'm a demo!", item);
+              return item + "extra";
+            });
+
+            console.log("the returened value of a", a);
+            document.querySelector(".content").innerText = thing;
+            return code;
+          })
+          .then(data => (document.querySelector(".content").innerText = data));
+      }
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+    </script>
+  </body>
+</html>
