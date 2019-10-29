@@ -10,27 +10,26 @@
       <div class="wrapper">
         <div class="header">Test JSON page</div>
         <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-        <button class="button" onclick="console.log(buttonClick());">
+        <button class="button" onclick="clickMe()">
           Click me to replace list entries
         </button>
         <div class="content">
-          <ul class="instructions">
-            <li>Delete and re-clone the class repository</li>
-            <li>
-              Open <span class="code">lab_5_json.html</span> in your browser
-            </li>
-            <li>Open your developer tools and look at the logged data</li>
-            <li>
-              In your console, write code to:
-              <ol>
-                <li>At the click of the button above</li>
-                <li>Loop through the 'countries' variable</li>
-                <li>Replace this list's entries with country names</li>
-                <li>Now, limit the number of countries listed to fifty</li>
-                <li>Randomize which fifty countries are displayed on load</li>
-              </ol>
-            </li>
-          </ul>
+          <ol class="instructions">
+            <li>At the click of the button above</li>
+            <li>Replace this list</li>
+            <li>With an ordered list</li>
+            <li>Of fifty randomly-selected countries</li>
+            <li>Every time you click the above button</li>
+            <li>The list of countries should change</li>
+            <ol>
+              <li>
+                Use your Developer tools to experiment with possible answers
+              </li>
+              <li>When you have an idea of the correct code</li>
+              <li>Write it into your copy of the Lab HTML</li>
+              <li>And save it for submission</li>
+            </ol>
+          </ol>
         </div>
         <div class="footer"></div>
       </div>
@@ -283,27 +282,35 @@
         { name: "Zimbabwe", code: "ZW" }
       ];
       console.log("List of countries in the world", countries);
+      sessionStorage.setItem("countries_arr", JSON.stringify(countries));
+      // const el = document.querySelector('button')
+      // el.addEventListener('click', (event) => {
+      // })
+      function clickMe() {
+        const json = sessionStorage.getItem("countries_arr");
+        const list = JSON.parse(json);
+        const nameArray = list.map(i => i.name);
 
-      var codes = [];
-      for (i in countries) {
-        codes.push(i.code);
+        const instructions = document.querySelector(".instructions");
+        instructions.innerHTML = "";
+
+        for (let i = 0; i < 50; i++) {
+          const selectNumber = getRandomIntInclusive(0, 242);
+          let el = document.createElement("li");
+          el.innerText = nameArray[selectNumber];
+          instructions.appendChild(el);
+        }
+        // i is a list item - i.name is what I want
+        // in here return only the names
+        // then we will select fifty using Math.random
+        // and make them into innerHTML elements
+        // using Append or Replace
       }
-
-      localStorage.setItem("locArray", JSON.stringify(codes));
-
-      
-    function buttonClick(){
-      var retrievedData = localStorage.getItem("locArray"); 
-      var retrieveCodes = JSON.parse(retrievedData);
-
-      for(i = 0; i<retrieveCodes.length; i++){
-       var x = retrieveCodes.shift();
-       retrieveCodes.push(countries.find(x));
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
       }
-
-     retrieveCodes= retrieveCodes.slice(0,50);
-     console.log(retrieveCodes);
-  }
     </script>
   </body>
 </html>
