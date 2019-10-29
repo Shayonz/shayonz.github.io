@@ -18,30 +18,22 @@
       function loadData() {
         fetch("ajax_sample.json")
           .then(res => res.json())
-          .then(res => res.map(c => c.code))
-          .then(codes => {
-            const a = codes.map(item => {
-              console.log("i'm a demo!", item);
-              return item + "extra";
-            });
+          .then(res => res.map(c => c.name + " " + c.code)) 
+          .then(nameArray => {
+            const instructions = document.querySelector(".content");
+            instructions.innerHTML = "";
 
-            console.log("the returened value of a", a);
-            document.querySelector("codes").innerText = thing;
-            return code;
-          })
-          .then(codes => {
-            if ((document.querySelector("codes").innerText = codes)) {
-              for (let i = 0; i < 15; i++) {
-                const num = Rand(0, 242);
-                let el = document.createElement("li");
-                el.innerText = a[num];
+            for (let i = 0; i < 50; i++) {
+              const selectNumber = getRandomIntInclusive(0, 242);
+              let el = document.createElement("li");
+              el.innerText = nameArray[selectNumber];
 
-                document.appendChild(el);
-              }
+              instructions.appendChild(el);
             }
           });
       }
-      function Rand(min, max) {
+
+      function getRandomIntInclusive(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
