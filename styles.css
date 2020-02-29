@@ -1,0 +1,36 @@
+
+.header {
+  display: flex;
+
+  background-color: rgb(19, 6, 136);
+  width: 100%;
+}
+.title-name{
+  color: red;
+}
+
+.header-pic{
+  text-align: right;
+  
+
+}
+.content{
+  display: inline;
+  align-items: center;
+  background-color: paleturquoise;
+  max-width: 960px;
+  padding-left: 80px;
+  padding-right: 30px;
+  
+}
+.pro-picture{
+  background-color: paleturquoise;
+  align-items: left;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+.wrapper{
+  background-color: palegoldenrod;
+  display: flex;
+  justify-content: center;
+}
