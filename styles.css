@@ -5,14 +5,9 @@
   background-color: rgb(19, 6, 136);
   width: 100%;
 }
-.title-name{
-  color: red;
-}
 
 .header-pic{
   text-align: right;
-  
-
 }
 .content{
   display: inline;
@@ -28,6 +23,8 @@
   align-items: left;
   border: 1px solid black;
   border-radius: 4px;
+  margin: 0px;
+  padding: 0px;
 }
 .wrapper{
   background-color: palegoldenrod;
