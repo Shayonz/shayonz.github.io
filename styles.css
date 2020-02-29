@@ -4,9 +4,10 @@
 }
 
 .header-pic {
-  display: block;
+  display: flex;
   max-width: 25%;
   height: auto;
+  justify-content: flex-end;
 }
 .content {
   display: inline;
