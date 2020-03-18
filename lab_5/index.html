@@ -13,6 +13,7 @@
       <button class="activate" onclick="clickOn()">Click me to replace list
         entries</button>
       <div class="content">
+        <ol class="countries"></ol>
        
       </div>
       <div class="footer"></div>
@@ -266,12 +267,23 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
-    document.getElementById("content").innerHTML+= '<ol class="countries"></ol>'
+    //document.getElementById("content").innerHTML+= '<ol class="countries"></ol>'
+    sessionStorage.setItem('listCountries',JSON.stringify(countries));
 
     function clickOn(){
 
+      const conList = JSON.parse(sessionStorage.getItem('listCountries'));
+      const conMap = conList.map((x) => x.name);
+      const changedList = document.querySelector('.countries');
+
+
       for(let i = 0; i < 25; i++){
-        
+
+        const randNum = randomGen(0,242);
+        let conName = document.createElement('li');
+        conName.innerText = conMap[randNum];
+        changedList.append(conName);
+
 
       };
 
