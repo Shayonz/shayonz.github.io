@@ -273,7 +273,6 @@
 
       const conList = JSON.parse(sessionStorage.getItem('listCountries'));
       const conMap = conList.map((x) => x.code +" "+ x.name);
-      const notSelected = conMap;
       const changedList = document.querySelector('.countries');
 
       changedList.innerHTML="";
@@ -284,12 +283,10 @@
         let conName = document.createElement('li');
         conName.innerText = conMap[randNum];
         changedList.append(conName);
-        notSelected.delete(conName);
+
 
 
       };
-
-      console.log(notSelected);
 
 
     }
