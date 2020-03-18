@@ -273,7 +273,7 @@
     function clickOn(){
 
       const conList = JSON.parse(sessionStorage.getItem('listCountries'));
-      const conMap = conList.map((x) => x.name);
+      const conMap = conList.map((x) => x.name +": "+ x.code);
       const changedList = document.querySelector('.countries');
 
 
@@ -286,6 +286,8 @@
 
 
       };
+
+      
 
 
     }
