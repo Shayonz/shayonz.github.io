@@ -14,6 +14,12 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""
     ></script>
+    <style>
+      #map1 {
+        height: 480px;
+        width: 640px;
+      }
+    </style>
   </head>
 
   <body>
@@ -21,13 +27,35 @@
       <div class="wrapper">
         <div class="header">Frontend Libraries: Maps Lab</div>
         <div class="content">
-          When your lab is done, this should be replaced with a stylish map.
+          <div id="map1"></div>
         </div>
         <div class="footer">Make some markers work!</div>
       </div>
     </div>
     <script>
-        /* Your lab code can go here, or in an external file you include */
+      /* Your lab code can go here, or in an external file you include */
+      const mymap = L.map("map1").setView([51.505, -0.09], 13);
+      L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken:
+            "pk.eyJ1Ijoic2hheW9ueiIsImEiOiJjazhuOXF5M2wwd2JrM2hxc3ptOWhsczVkIn0.LAM3gIaWXQZYi0iV25n55A",
+        }
+      ).addTo(mymap);
+      const mark1 = L.marker([38.988336, -76.941588]).addTo(mymap);
+      const str1 = "<b>Hornbake Library</b>";
+      mark1.bindPopup(str1).openPopup();
+      /*const polygon = L.polygon([
+        [51.509, -0.08],
+        [51.503, -0.06],
+        [51.51, -0.047],
+      ]).addTo(mymap);*/
     </script>
   </body>
 </html>
