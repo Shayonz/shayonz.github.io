@@ -17,7 +17,7 @@
       fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
         .then((res) => res.json())
         .then((res) => {
-          const reformattedData = Object.entries(data).map((current, i) => {
+          const reformattedData = Object.entries(res).map((current, i) => {
             console.log(current);
             return {
               y: current[1].length,
