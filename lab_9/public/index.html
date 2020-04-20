@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Replace Me With Your Lab Page</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+  </head>
 
-<head>
-  <title>Replace Me With Your Lab Page</title>
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="wrapper">
-      <div class="header">Replace Me With Your Lab Page</div>
-      <div class="content"></div>
-      <div class="footer"></div>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Replace Me With Your Lab Page</div>
+        <div class="content"></div>
+        <div class="footer"></div>
+      </div>
     </div>
-  </div>
-  <script>
-    fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
-      .then(res => res.json())
-      .then(res => {
-        // Here's where your chart code should go.
-      })
-  </script>
-</body>
-
+    <script>
+      fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
+        .then((res) => res.json())
+        .then((res) => {
+          const reformattedData = Object.entries(data).map((current, i) => {
+            console.log(current);
+            return {
+              y: current[1].length,
+              label: current[0],
+            };
+          });
+          return reformattedData;
+        })
+        .then((res) => {
+          // Here's where your chart code should go.
+          const chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2",
+            exportEnaabled: true,
+            animationEnabled: true,
+            title: {
+              text: "Lets Find Somwhere To Eat",
+            },
+            data: [
+              {
+                type: "pie",
+                IndexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: results,
+              },
+            ],
+          });
+        });
+    </script>
+  </body>
 </html>
